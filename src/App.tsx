@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Customize from "./pages/Customize";
 import Preview from "./pages/Preview";
 import NotFound from "./pages/NotFound";
+import PhotoUpload from "./pages/PhotoUpload";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/customize" element={<Customize />} />
           <Route path="/preview" element={<Preview />} />
+          <Route path="/photo-upload" element={<PhotoUpload />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </TooltipProvider>

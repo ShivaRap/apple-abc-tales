@@ -10,14 +10,14 @@ import { ShoppingCart } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
 const Preview = () => {
-  const [childName, setChildName] = useState("Alex");
+  const [childName, setChildName] = useState("Arya");
   const [theme, setTheme] = useState("adventure");
   const { toast } = useToast();
   
   const handleOrder = () => {
     toast({
       title: "Order placed!",
-      description: "Thank you for your order. Your book will be delivered soon!",
+      description: "Thank you for your order. Your Pusthakam will be delivered soon!",
     });
   };
 
@@ -28,7 +28,7 @@ const Preview = () => {
       <div className="flex-grow">
         <div className="container mx-auto px-4 py-8">
           <div className="bg-white rounded-xl shadow-md p-6 mb-8">
-            <h1 className="text-3xl font-bold mb-2">{childName}'s ABC Book</h1>
+            <h1 className="text-3xl font-bold mb-2">{childName}'s Pusthakam</h1>
             <p className="text-gray-600 mb-6">
               Preview your personalized storybook and make any final adjustments before ordering.
             </p>
@@ -54,7 +54,7 @@ const Preview = () => {
               <div>
                 <h2 className="text-xl font-bold mb-2">Ready to order?</h2>
                 <p className="text-gray-700">
-                  Your personalized book will be printed on high-quality paper with a durable hardcover.
+                  Your personalized Pusthakam will be printed on high-quality paper with a durable hardcover.
                 </p>
                 <p className="text-sm text-gray-500 mt-2">
                   Estimated delivery: 7-10 business days

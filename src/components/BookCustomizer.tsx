@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,8 +7,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Slider } from "@/components/ui/slider";
 import { useToast } from "@/components/ui/use-toast";
 import { useNavigate } from "react-router-dom";
-import { Sparkles, Palette, Heart } from "lucide-react";
-import { BookOpen } from "lucide-react";
+import { Sparkles, Palette, Heart, BookOpen, Camera } from "lucide-react";
+import { Link } from "react-router-dom";
 
 type BookTheme = "adventure" | "animals" | "space" | "fairy tale" | "nature";
 
@@ -18,6 +19,9 @@ const BookCustomizer = () => {
   const [dedicationMessage, setDedicationMessage] = useState("");
   const { toast } = useToast();
   const navigate = useNavigate();
+  
+  // Placeholder for simulated uploaded photo
+  const [hasUploadedPhoto, setHasUploadedPhoto] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,13 +51,55 @@ const BookCustomizer = () => {
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white rounded-2xl shadow-lg">
       <div className="mb-8 text-center">
-        <h2 className="text-3xl font-bold mb-2">Customize Your ABC Book</h2>
+        <h2 className="text-3xl font-bold mb-2">Customize Your Pusthakam</h2>
         <p className="text-gray-600">
           Make it special by personalizing it just for your little one
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="bg-pastel-blue/20 rounded-xl p-6 mb-6">
+          <div className="flex flex-col sm:flex-row items-center gap-4 mb-4">
+            <div className="sm:w-1/4">
+              {hasUploadedPhoto ? (
+                <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-lg mx-auto">
+                  <img 
+                    src="/placeholder.svg" 
+                    alt="Child's Photo" 
+                    className="object-cover w-full h-full"
+                  />
+                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                    <Button 
+                      size="sm" 
+                      variant="secondary"
+                      onClick={() => navigate("/photo-upload")}
+                    >
+                      Change
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <div className="w-24 h-24 bg-pastel-purple/30 rounded-full flex items-center justify-center mx-auto border-4 border-white shadow-lg">
+                  <Camera className="h-10 w-10 text-purple-500" />
+                </div>
+              )}
+            </div>
+            <div className="sm:w-3/4 text-center sm:text-left">
+              <h3 className="text-lg font-semibold mb-2">Child's Photo</h3>
+              <p className="text-gray-600 text-sm mb-3">
+                Add your child's photo to create a personalized character
+              </p>
+              {!hasUploadedPhoto && (
+                <Link to="/photo-upload">
+                  <Button variant="outline" className="bg-white">
+                    <Camera className="mr-2 h-4 w-4" /> Upload Photo
+                  </Button>
+                </Link>
+              )}
+            </div>
+          </div>
+        </div>
+
         <div className="space-y-4">
           <div>
             <Label htmlFor="childName" className="text-lg">
