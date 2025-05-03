@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +7,7 @@ import { Slider } from "@/components/ui/slider";
 import { useToast } from "@/components/ui/use-toast";
 import { useNavigate } from "react-router-dom";
 import { Sparkles, Palette, Heart } from "lucide-react";
+import { BookOpen } from "lucide-react";
 
 type BookTheme = "adventure" | "animals" | "space" | "fairy tale" | "nature";
 
